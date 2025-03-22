@@ -16,6 +16,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <script src="js/script.js"></script>
   </head>
   <body>
 
@@ -1607,25 +1608,32 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dictumst amet, metus, sit massa posuere maecenas. At tellus ut nunc amet vel egestas.</p>
               </div>
               <div class="col-md-6 p-5">
-                <form>
+                
+                <!--Formulario para capturar información -->
+                <!--nombre completo-->
+                <form id="formulario">
                   <div class="mb-3">
-                    <label for="name" class="form-label">Name</label>
-                    <input type="text"
-                      class="form-control form-control-lg" name="name" id="name" placeholder="Name">
+                    <label for="nombre" class="form-label">Nombre Completo</label>
+                    <input type="text" class="form-control" id="nombre" placeholder="Nombre Completo">
+                    <div class="invalid-feedback">El nombre es obligatorio.</div>
                   </div>
+
+                  <!--Correo Electrónico-->
                   <div class="mb-3">
-                    <label for="" class="form-label">Email</label>
-                    <input type="email" class="form-control form-control-lg" name="email" id="email" placeholder="abc@mail.com">
+                    <label for="correo" class="form-label">Correo Electrónico</label>
+                    <input type="email" class="form-control" id="correo" placeholder="Correo Electrónico">
+                    <div class="invalid-feedback">El correo es obligatorio.</div>
                   </div>
-                  <div class="form-check form-check-inline mb-3">
-                    <label class="form-check-label" for="subscribe">
-                    <input class="form-check-input" type="checkbox" id="subscribe" value="subscribe">
-                    Subscribe to the newsletter</label>
-                  </div>
-                  <div class="d-grid gap-2">
-                    <button type="submit" class="btn btn-dark btn-lg">Submit</button>
-                  </div>
-                </form>
+
+                  <!--Teléfono-->
+                  <div class="mb-3">
+                    <label for="telefono" class="form-label">Teléfono</label>
+                    <input type="text" class="form-control" id="telefono" placeholder="Teléfono">
+                    <div class="invalid-feedback">El teléfono es obligatorio.</div>
+
+                  <!--Botón de enviar-->
+                  <button type="submit" class="btn btn-primary">Enviar</button>
+                </form>                
                 
               </div>
               
