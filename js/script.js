@@ -1,43 +1,62 @@
-//Capturar la información del formulario
-const formulario = document.querySelector("form")
+// Esperamos a que el DOM esté completamente cargado antes de ejecutar el código
+document.addEventListener("DOMContentLoaded", function () {
+    
+  // Seleccionamos el formulario por su ID
+  const formulario = document.getElementById("formulario");
 
-//Agregar un evento al enviar el formulario
-formulario.addEventListener("submit", function(evento){
-  evento.preventDefault();
-  let valido = true; //Variable para validar el formulario
-  const nombre = document.getElementById("nombre");
-  const email = document.getElementById("email");
-  const telefono = document.getElementById("telefono");
+  // Agregamos un evento para cuando se envíe el formulario
+  formulario.addEventListener("submit", function (event) {
+      
+      // Evita que la página se recargue al enviar el formulario
+      event.preventDefault();
 
-  //Validar nombre
-  if (nombre.value.trim() === ""){
-    nombre.classList.add("invalid-feedback"); //Agregar una clase de bootstrap a la alerta.
-    valido = false;
-    } else {
-      nombre.classList.remove("invalid-feedback"); //Remover la clase de bootstrap a la alerta.
-    }
+      // Capturamos los valores de los campos
+      const nombre = document.getElementById("nombre");
+      const correo = document.getElementById("correo");
+      const telefono = document.getElementById("telefono");
 
-  //Validar email
-  const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-  if (!emailRegex.test(email.value.trim())){
-    email.classList.add("invalid-feedback"); //Agregar una clase de bootstrap a la alerta.
-    valido = false;
-  } else {
-    email.classList.remove("invalid-feedback"); //Remover la clase de bootstrap a la alerta.
-  }
+      // Variable para controlar si hay errores
+      let valido = true;
 
-  //Validar teléfono
-  const telefonoRegex = /^[0-9]{10}$/;
-  if (!telefonoRegex.test(telefono.value.trim())){
-    telefono.classList.add("invalid-feedback"); //Agregar una clase de bootstrap a la alerta.
-    valido = false;
-  } else {
-    telefono.classList.remove("invalid-feedback"); //Remover la clase de bootstrap a la alerta.
-  }
+      // Validar el campo nombre
+      if (nombre.value.trim() === "") {
+          nombre.classList.add("is-invalid");  // Agrega la clase de Bootstrap para marcarlo en rojo
+          valido = false;
+      } else {
+          nombre.classList.remove("is-invalid"); // Si es válido, remueve la clase de error
+      }
 
-  //Si el formulario es válido, enviar la información
-  if (valido){
-    alert("¡Formulario enviado correctamente!");
-    formulario.reset(); //Limpiar el formulario
-  }
+      // Validar el campo correo
+      if (correo.value.trim() === "") {
+          correo.classList.add("is-invalid");
+          valido = false;
+      } else {
+          correo.classList.remove("is-invalid");
+      }
+
+      // Validar el campo teléfono
+      if (telefono.value.trim() === "") {
+          telefono.classList.add("is-invalid");
+          valido = false;
+      } else {
+          telefono.classList.remove("is-invalid");
+      }
+
+      // Si todos los campos son válidos, enviamos la información
+      if (valido) {
+          console.log("Formulario enviado con éxito.");
+          console.log("Nombre: ", nombre.value);
+          console.log("Correo: ", correo.value);
+          console.log("Teléfono: ", telefono.value);
+
+          // Puedes agregar una alerta o redirigir a otra página
+          alert("Formulario enviado con éxito!");
+
+          // Aquí podrías enviar los datos a un servidor si es necesario
+          // Ejemplo: fetch("URL_DEL_SERVIDOR", { method: "POST", body: new FormData(formulario) });
+
+          // Limpiar los campos después de enviar
+          formulario.reset();
+      }
+  });
 });
